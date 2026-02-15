@@ -5,8 +5,10 @@ A Chrome extension that automatically tracks participant attendance in Google Me
 ## Features
 
 - **Real-time Participant Detection**: Track participant join/leave events using MutationObserver and polling
+- **Auto Panel Initialization**: Automatically opens the participant panel briefly to initialize DOM detection
+- **Event-based Tracking**: Records each join and leave as a separate event with timestamp
 - **Local Storage**: Secure local data storage using Chrome Storage API
-- **CSV Export**: Export attendance records per meeting as CSV files
+- **CSV Export**: Export attendance records per meeting as CSV files (one row per event)
 - **Meeting History Management**: View and manage past meeting records
 - **Google Sheets Integration** (Optional): Auto-sync to Google Spreadsheets via OAuth2 authentication
 
@@ -38,13 +40,16 @@ A Chrome extension that automatically tracks participant attendance in Google Me
 
 ### Recorded Data
 
+Each participant's join and leave is recorded as a separate event:
+
 | Field | Description |
 |-------|-------------|
-| Participant Name | Display name of the meeting participant |
+| Name | Display name of the meeting participant |
 | Email | Shown for same-organization users (optional) |
-| Join Time | Time when participant joined the meeting |
-| Leave Time | Time when participant left the meeting |
-| Join Count | Number of times participant rejoined |
+| Time | Timestamp of the event |
+| Type | `Join` or `Leave` |
+
+CSV export outputs one row per event, making it easy to analyze attendance patterns and exact durations.
 
 ### Google Sheets Integration (Optional)
 
@@ -89,9 +94,13 @@ google-meet-attendance-extension/
     "John Doe": {
       name: "John Doe",
       email: "john@example.com",
-      joinTime: "2025-02-15T09:00:00Z",
-      leaveTime: "2025-02-15T10:00:00Z",
-      joinCount: 1
+      events: [
+        { time: "2025-02-15T09:00:00Z", type: "Join" },
+        { time: "2025-02-15T09:45:00Z", type: "Leave" },
+        { time: "2025-02-15T09:50:00Z", type: "Join" },
+        { time: "2025-02-15T10:00:00Z", type: "Leave" }
+      ],
+      isPresent: false
     }
   }
 }
@@ -120,6 +129,7 @@ This extension uses the following permissions:
 - Participant detection may temporarily fail if Google Meet updates its DOM structure
 - Email addresses are only visible for same-organization users or under certain conditions
 - When a browser tab is closed, remaining participants are marked as left at that moment
+- The participant panel is briefly opened automatically on tracking start; this is required for Google Meet to initialize the participant DOM elements
 
 ## License
 
