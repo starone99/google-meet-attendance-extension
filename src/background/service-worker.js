@@ -4,6 +4,7 @@
  */
 
 import * as storage from '../lib/storage.js';
+import * as sheetsApi from '../lib/sheets-api.js';
 
 // Track active meetings per tab
 const activeMeetings = new Map();
@@ -133,6 +134,20 @@ async function handleMeetingEnded(message, tabId) {
 
   // Update badge
   updateBadge(tabId, '', '');
+
+  // Auto-sync to Google Sheets if enabled
+  const settings = await storage.getSettings();
+  if (settings.autoSync && settings.spreadsheetId) {
+    try {
+      const meeting = await storage.getMeeting(message.meetingId);
+      if (meeting) {
+        await sheetsApi.syncMeeting(settings.spreadsheetId, meeting);
+        console.log('[Background] Auto-synced meeting to Sheets:', message.meetingId);
+      }
+    } catch (err) {
+      console.warn('[Background] Auto-sync failed:', err);
+    }
+  }
 
   return { success: true };
 }
