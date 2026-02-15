@@ -4,41 +4,36 @@
 
 Last updated: 2026-02-15
 
-## Data We Collect
+## Data Collection
 
-| Data | Purpose |
-|------|---------|
-| Google Meet participant names | To record meeting attendance |
-| Participant email addresses | Displayed only when visible in Google Meet (same organization) |
-| Meeting timestamps | To track join/leave event times |
-| Google account info | To authenticate Google Sheets sync (optional) |
+This extension does **not** collect, transmit, or store any user data on external servers.
 
-## How Data Is Stored
+All data (participant names, timestamps, meeting records) is stored **locally** on the user's device using Chrome's `chrome.storage.local` API.
 
-- All attendance data is stored **locally** in your browser using Chrome's `chrome.storage.local` API.
-- No data is sent to any external server.
-- If you enable Google Sheets sync, data is sent **only** to your own Google Spreadsheet via the Google Sheets API.
+## Google Sheets Sync (Optional)
+
+If the user enables Google Sheets sync, attendance data is sent **only** to the user's own Google Spreadsheet. The extension does not have access to any other user's data.
 
 ## Data Sharing
 
-- We do **not** sell, share, or transfer your data to third parties.
-- We do **not** use your data for advertising, analytics, or any purpose unrelated to attendance tracking.
+- We do **not** collect any user data.
+- We do **not** sell, share, or transfer any data to third parties.
+- We do **not** use any data for advertising or analytics.
 
 ## User Control
 
-- You can view and delete individual meeting records from the extension popup.
-- You can delete all stored data from the extension settings page.
+- All data is stored locally on the user's device.
+- Users can delete individual or all meeting records from the extension.
 - Uninstalling the extension removes all locally stored data.
-- You can disconnect your Google account at any time from the settings page.
 
 ## Permissions
 
 | Permission | Reason |
 |------------|--------|
-| `storage` | Store attendance records and settings locally |
+| `storage` | Store attendance records and settings locally on the user's device |
 | `activeTab` | Communicate with the Google Meet tab to detect participants |
 | `host_permissions (meet.google.com)` | Run content script on Google Meet pages |
-| `identity` | Google OAuth2 authentication for optional Sheets sync |
+| `identity` | Google OAuth2 authentication for optional Sheets sync to the user's own spreadsheet |
 
 ## Contact
 
