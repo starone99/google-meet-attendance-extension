@@ -12,7 +12,7 @@
     "https://meet.google.com/*"
   ],
   "oauth2": {
-    "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+    "client_id": "644377475596-l3usq6v5ev0t5ethifpjsggfftncars3.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/spreadsheets"
     ]
