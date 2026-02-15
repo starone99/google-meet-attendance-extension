@@ -25,5 +25,6 @@ Thumbs.db
 # Screenshots
 screenshots/
 
-# Secrets (never commit OAuth client IDs in production)
+# Secrets
+*.pem
 # manifest.local.json

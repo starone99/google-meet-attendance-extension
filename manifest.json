@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Google Meet Attendance Tracker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Track participant attendance in Google Meet meetings with local storage and optional Google Sheets sync",
   "permissions": [
     "storage",
