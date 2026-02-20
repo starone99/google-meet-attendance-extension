@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Meet Attendance Tracker</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 { margin-bottom: 5px; }
+        .updated { color: #666; margin-bottom: 30px; }
+        h2 { margin-top: 25px; margin-bottom: 10px; }
+        p, ul { margin-bottom: 15px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 4px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+        th { background: #f5f5f5; }
+        a { color: #1a73e8; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: 2026-02-15</p>
+
+    <h2>Data Collection</h2>
+    <p>This extension does <strong>not</strong> collect, transmit, or store any user data on external servers. All data (participant names, timestamps, meeting records) is stored <strong>locally</strong> on the user's device using Chrome's <code>chrome.storage.local</code> API.</p>
+
+    <h2>Google Sheets Sync (Optional)</h2>
+    <p>If the user enables Google Sheets sync, attendance data is sent <strong>only</strong> to the user's own Google Spreadsheet. The extension does not have access to any other user's data.</p>
+
+    <h2>Data Sharing</h2>
+    <ul>
+        <li>We do <strong>not</strong> collect any user data.</li>
+        <li>We do <strong>not</strong> sell, share, or transfer any data to third parties.</li>
+        <li>We do <strong>not</strong> use any data for advertising or analytics.</li>
+    </ul>
+
+    <h2>User Control</h2>
+    <ul>
+        <li>All data is stored locally on the user's device.</li>
+        <li>Users can delete individual or all meeting records from the extension.</li>
+        <li>Uninstalling the extension removes all locally stored data.</li>
+    </ul>
+
+    <h2>Permissions</h2>
+    <table>
+        <tr><th>Permission</th><th>Reason</th></tr>
+        <tr><td><code>storage</code></td><td>Store attendance records and settings locally on the user's device</td></tr>
+        <tr><td><code>activeTab</code></td><td>Communicate with the Google Meet tab to detect participants</td></tr>
+        <tr><td><code>host_permissions (meet.google.com)</code></td><td>Run content script on Google Meet pages</td></tr>
+        <tr><td><code>identity</code></td><td>Google OAuth2 authentication for optional Sheets sync to the user's own spreadsheet</td></tr>
+    </table>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy, please open an issue at:<br>
+    <a href="https://github.com/starone99/google-meet-attendance-extension/issues">GitHub Issues</a></p>
+
+    <div class="back">
+        <a href="index.html">Back to Home</a>
+    </div>
+</body>
+</html>
